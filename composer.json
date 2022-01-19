@@ -1,0 +1,31 @@
+{
+    "name": "nazaryuzhyn/laravel-auth",
+    "description": "Laravel package for auth, registration, reset password.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "nazaryuzhyn",
+            "email": "nazaryuzhyn@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "LaravelAuth\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaravelAuth\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelAuth\\Providers\\LaravelAuthServiceProvider"
+            ]
+        }
+    },
+    "require": {}
+}
