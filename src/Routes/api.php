@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use LaravelAuth\Http\Controllers\LoginController;
+use LaravelAuth\Http\Controllers\SignUpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('api')->name('api.')->group(function () {
-    //
+    Route::post('signup', SignUpController::class)->name('signup');
+    Route::post('login', LoginController::class)->name('login');
 });
