@@ -10,12 +10,12 @@ You can install the package via composer:
 
 Register package service provider in `providers` array inside `config/app.php`
 ```php
-    'providers' => [
-        // ...
-    
-        'LaravelAuth\Providers\LaravelAuthServiceProvider',
+'providers' => [
+    // ...
 
-    ],
+    'LaravelAuth\Providers\LaravelAuthServiceProvider',
+
+],
 ```
 
 ### Publish Package Configs
