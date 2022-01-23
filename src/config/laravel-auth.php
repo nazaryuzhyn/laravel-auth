@@ -2,10 +2,17 @@
 
 return [
 
+    /*
+     * Custom User Resource
+     */
     'user_resource' => LaravelAuth\Http\Resources\UserResource::class,
+
 
     'login' => [
 
+        /*
+         * Validation rules to Login
+         */
         'rules' => [
             'email' => [
                 'required',
@@ -19,8 +26,12 @@ return [
 
     ],
 
+
     'signup' => [
 
+        /*
+         * Validation rules to Sign Up
+         */
         'rules' => [
             'name' => [
                 'required',
