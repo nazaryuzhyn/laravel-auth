@@ -55,4 +55,51 @@ return [
 
     ],
 
+    'forgot_password' => [
+
+        /*
+         * Validation rules to Forgot Password
+         */
+        'rules' => [
+            'email' => [
+                'required',
+                'email',
+                'exists:users,email'
+            ],
+        ],
+
+    ],
+
+
+    'reset_password' => [
+
+        /*
+         * Custom web url to reset password
+         */
+        'web_url' => env('RESET_PASSWORD_URL', '/reset-password'),
+
+        /*
+         * Custom notification class
+         */
+        'notification' => LaravelAuth\Notifications\ResetPasswordNotification::class,
+
+        /*
+         * Validation rules to Reset Password
+         */
+        'rules' => [
+            'token' => [
+                'required',
+                'string',
+                'exists:password_resets,token'
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:50',
+            ],
+        ],
+
+    ]
+
 ];
