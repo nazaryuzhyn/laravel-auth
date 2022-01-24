@@ -1,14 +1,30 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Laravel Auth Config
+|--------------------------------------------------------------------------
+*/
 return [
 
     /*
-     * Custom User Resource
+     * User Resource class
      */
     'user_resource' => LaravelAuth\Http\Resources\UserResource::class,
 
 
+    /*
+     * Prefix to routes
+     */
+    'prefix_route' => 'api',
+
+
     'login' => [
+
+        /*
+         * Route to Log in
+         */
+        'route' => 'login',
 
         /*
          * Validation rules to Login
@@ -28,6 +44,11 @@ return [
 
 
     'signup' => [
+
+        /*
+         * Route to Sign Up
+         */
+        'route' => 'signup',
 
         /*
          * Validation rules to Sign Up
@@ -58,6 +79,11 @@ return [
     'forgot_password' => [
 
         /*
+         * Route to Forgot Password
+         */
+        'route' => 'forgot-password',
+
+        /*
          * Validation rules to Forgot Password
          */
         'rules' => [
@@ -74,12 +100,17 @@ return [
     'reset_password' => [
 
         /*
-         * Custom web url to reset password
+         * Route to Reset Password
+         */
+        'route' => 'reset-password',
+
+        /*
+         * Web url to reset password
          */
         'web_url' => env('RESET_PASSWORD_URL', '/reset-password'),
 
         /*
-         * Custom notification class
+         * Notification class
          */
         'notification' => LaravelAuth\Notifications\ResetPasswordNotification::class,
 
