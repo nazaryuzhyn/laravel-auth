@@ -17,10 +17,19 @@ use LaravelAuth\Http\Controllers\SignUpController;
 |
 */
 
-Route::prefix('api')->name('api.')->group(function () {
-    Route::post('signup', SignUpController::class)->name('signup');
-    Route::post('login', LoginController::class)->name('login');
-    Route::post(config('laravel-auth.forgot_password.route'), ForgotPasswordController::class)
-        ->name('forgot-password');
-    Route::post('reset-password', ResetPasswordController::class)->name('reset-password');
+Route::prefix(config('laravel-auth.prefix_route', 'api'))
+    ->name(config('laravel-auth.prefix_route', 'api') . '.')->group(function () {
+
+    Route::post(config('laravel-auth.signup.route', 'signup'), SignUpController::class)
+        ->name(config('laravel-auth.signup.route', 'signup'));
+
+    Route::post(config('laravel-auth.login.route', 'login'), LoginController::class)
+        ->name(config('laravel-auth.login.route', 'login'));
+
+    Route::post(config('laravel-auth.forgot_password.route', 'forgot-password'), ForgotPasswordController::class)
+        ->name(config('laravel-auth.forgot_password.route', 'forgot-password'));
+
+    Route::post(config('laravel-auth.reset_password.route', 'reset-password'), ResetPasswordController::class)
+        ->name(config('laravel-auth.reset_password.route', 'reset-password'));
+
 });
