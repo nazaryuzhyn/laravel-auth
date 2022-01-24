@@ -27,5 +27,11 @@
             ]
         }
     },
-    "require": {}
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "laravel/framework": "^8.0.0",
+        "laravel/sanctum": "^2.11",
+        "laravel/socialite": "^5.3"
+    }
 }
