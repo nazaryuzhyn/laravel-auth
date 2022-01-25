@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Response;
 use LaravelAuth\Http\Requests\SignUpRequest;
 
 /**
- * Class SignUpActionController.
+ * Class SignUpController.
  *
  * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
  * @package LaravelAuth\Http\Controllers
