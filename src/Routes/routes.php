@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use LaravelAuth\Http\Controllers\ForgotPasswordController;
 use LaravelAuth\Http\Controllers\LoginController;
+use LaravelAuth\Http\Controllers\LogoutController;
 use LaravelAuth\Http\Controllers\ResetPasswordController;
 use LaravelAuth\Http\Controllers\SignUpController;
 
@@ -31,5 +32,9 @@ Route::prefix(config('laravel-auth.prefix_route', 'api'))
 
     Route::post(config('laravel-auth.reset_password.route', 'reset-password'), ResetPasswordController::class)
         ->name(config('laravel-auth.reset_password.route', 'reset-password'));
+
+    Route::delete(config('laravel-auth.logout.route', 'logout'), LogoutController::class)
+        ->middleware('auth:sanctum')
+        ->name(config('laravel-auth.logout.route', 'logout'));
 
 });
