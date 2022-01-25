@@ -32,5 +32,9 @@ class LaravelAuthServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__ . '/../config/laravel-auth.php', 'laravel-auth'
         );
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/services.php', 'services'
+        );
     }
 }

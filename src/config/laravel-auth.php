@@ -19,6 +19,11 @@ return [
     'prefix_route' => 'api',
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Login
+    |--------------------------------------------------------------------------
+    */
     'login' => [
 
         /*
@@ -31,18 +36,59 @@ return [
          */
         'rules' => [
             'email' => [
-                'required',
+                'required_without_all:driver,access_token',
                 'string',
             ],
             'password' => [
-                'required',
+                'required_without_all:driver,access_token',
+                'string',
+            ],
+            'driver' => [
+                'required_without_all:email,password',
+                \Illuminate\Validation\Rule::in([
+                    'google',
+                ]),
+            ],
+            'access_token' => [
+                'required_without_all:email,password',
                 'string',
             ],
         ],
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Socialite providers
+    |--------------------------------------------------------------------------
+    |
+    | Before using Socialite, you will need to add credentials
+    | for the OAuth providers your application utilizes.
+    | Example using google driver and credentials for your provider.
+    |
+    */
+    'socialite' => [
+
+        'providers' => [
+            'google' => [
+                'client_id' => env('GOOGLE_CLIENT_ID'),
+                'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+                'redirect' => env('GOOGLE_REDIRECT'),
+            ],
+            // ...
+        ]
 
     ],
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Signup
+    |--------------------------------------------------------------------------
+    |
+    | If you need added new field to save, just add validation rules down.
+    |
+    */
     'signup' => [
 
         /*
@@ -76,6 +122,12 @@ return [
 
     ],
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Forgot Password
+    |--------------------------------------------------------------------------
+    */
     'forgot_password' => [
 
         /*
@@ -97,6 +149,11 @@ return [
     ],
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Reset Password
+    |--------------------------------------------------------------------------
+    */
     'reset_password' => [
 
         /*
@@ -131,6 +188,20 @@ return [
             ],
         ],
 
-    ]
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Logout
+    |--------------------------------------------------------------------------
+    */
+    'logout' => [
+
+        /*
+         * Route to Log out
+         */
+        'route' => 'logout',
+    ],
 
 ];
