@@ -2,7 +2,6 @@
 
 namespace LaravelAuth\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +9,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 use LaravelAuth\Http\Requests\ForgotPasswordRequest;
 use LaravelAuth\Models\PasswordReset;
+use LaravelAuth\Models\User;
 
 /**
  * Class ForgotPasswordController.

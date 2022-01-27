@@ -31,8 +31,10 @@ class LoginController extends Controller
     public function __invoke(LoginRequest $request): JsonResponse
     {
         $resource = config('laravel-auth.user_resource');
+        $model = config('laravel-auth.user_model') ?? \LaravelAuth\Models\User::class;
 
-        $user = $this->getUser($request);
+        $user = $model::query()
+            ->find($this->getUser($request)->id);
         $token = $user->createToken($request->userAgent());
 
         return Response::json([
@@ -48,10 +50,10 @@ class LoginController extends Controller
      * Get user.
      *
      * @param LoginRequest $request
-     * @return User|null
+     * @return User|\Illuminate\Foundation\Auth\User|null
      * @throws AuthenticationException
      */
-    private function getUser(LoginRequest $request): ?User
+    private function getUser(LoginRequest $request): User|\Illuminate\Foundation\Auth\User|null
     {
         if ($this->shouldLoginViaSocials($request)) {
             return $this->loginViaSocials($request);
@@ -86,7 +88,7 @@ class LoginController extends Controller
      */
     private function loginViaSocials(LoginRequest $request): mixed
     {
-        $model = config('laravel-auth.user_model') ?? User::class;
+        $model = config('laravel-auth.user_model') ?? \LaravelAuth\Models\User::class;
 
         try {
             /** @var AbstractProvider $driver */

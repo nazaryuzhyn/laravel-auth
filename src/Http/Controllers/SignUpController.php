@@ -2,11 +2,11 @@
 
 namespace LaravelAuth\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use LaravelAuth\Http\Requests\SignUpRequest;
+use LaravelAuth\Models\User;
 
 /**
  * Class SignUpController.
