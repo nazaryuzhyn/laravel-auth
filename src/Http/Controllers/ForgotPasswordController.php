@@ -2,9 +2,9 @@
 
 namespace LaravelAuth\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
@@ -28,8 +28,9 @@ class ForgotPasswordController extends Controller
     public function __invoke(ForgotPasswordRequest $request): JsonResponse
     {
         return DB::transaction(function () use ($request) {
-            /** @var User $user */
-            $user = User::query()->where('email', '=', $request->get('email'))->first();
+            $model = config('laravel-auth.user_model') ?? User::class;
+
+            $user = $model::query()->where('email', '=', $request->get('email'))->first();
 
             /** @var PasswordReset $passwordReset */
             $passwordReset = PasswordReset::query()->firstOrCreate(

@@ -2,8 +2,8 @@
 
 namespace LaravelAuth\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use LaravelAuth\Http\Requests\SignUpRequest;
@@ -19,10 +19,10 @@ class SignUpController extends Controller
     public function __invoke(SignUpRequest $request)
     {
         return DB::transaction(function () use ($request) {
+            $model = config('laravel-auth.user_model') ?? User::class;
             $resource = config('laravel-auth.user_resource');
 
-            /** @var User $user */
-            $user = User::query()->create($request->validated());
+            $user = $model::query()->create($request->validated());
 
             $token = $user->createToken($request->userAgent());
 

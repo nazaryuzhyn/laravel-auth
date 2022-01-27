@@ -2,11 +2,11 @@
 
 namespace LaravelAuth\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Laravel\Socialite\Facades\Socialite;
@@ -81,11 +81,13 @@ class LoginController extends Controller
      * Log in via socials.
      *
      * @param LoginRequest $request
-     * @return User
+     * @return mixed
      * @throws AuthenticationException
      */
-    private function loginViaSocials(LoginRequest $request): User
+    private function loginViaSocials(LoginRequest $request): mixed
     {
+        $model = config('laravel-auth.user_model') ?? User::class;
+
         try {
             /** @var AbstractProvider $driver */
             $driver = Socialite::driver($request->get('driver'));
@@ -96,8 +98,7 @@ class LoginController extends Controller
             );
         }
 
-        /** @var User $user */
-        $user = User::query()->firstOrCreate(
+        return $model::query()->firstOrCreate(
             [
                 'email' => $socialiteUser->getEmail()
             ],
@@ -107,7 +108,5 @@ class LoginController extends Controller
                 'password' => null,
             ]
         );
-
-        return $user;
     }
 }
