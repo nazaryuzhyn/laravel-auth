@@ -1,21 +1,32 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Laravel Auth Config
-|--------------------------------------------------------------------------
-*/
 return [
 
     /*
-     * User Resource class
-     */
+    |--------------------------------------------------------------------------
+    | User Model
+    |--------------------------------------------------------------------------
+    |
+    | If you are using a custom model you can specify it here.
+    | Leave as null to use default user model.
+    |
+    */
+    'user_model' => null,
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Resource
+    |--------------------------------------------------------------------------
+    */
     'user_resource' => LaravelAuth\Http\Resources\UserResource::class,
 
 
     /*
-     * Prefix to routes
-     */
+    |--------------------------------------------------------------------------
+    | Prefix to routes
+    |--------------------------------------------------------------------------
+    */
     'prefix_route' => 'api',
 
 
@@ -23,6 +34,12 @@ return [
     |--------------------------------------------------------------------------
     | Login
     |--------------------------------------------------------------------------
+    |
+    | After using this package you can change the route `login`,
+    | in section `route`. It is also possible to change validation rules.
+    | If you add a new social provider, don't forget to add to
+    | validation rules in section `driver` after `google` driver.
+    |
     */
     'login' => [
 
@@ -87,6 +104,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | If you need added new field to save, just add validation rules down.
+    | Also, you can change the route `signup`, in section `route`.
     |
     */
     'signup' => [
@@ -127,6 +145,10 @@ return [
     |--------------------------------------------------------------------------
     | Forgot Password
     |--------------------------------------------------------------------------
+    |
+    | You can change route `forgot-password` in section `route`.
+    | It is also possible to change validation rules.
+    |
     */
     'forgot_password' => [
 
@@ -153,6 +175,13 @@ return [
     |--------------------------------------------------------------------------
     | Reset Password
     |--------------------------------------------------------------------------
+    |
+    | You can change route `reset-password` in section `route`.
+    | It is also possible to change the web_url that comes
+    | in the password reset email.
+    | In section `notification` you can change class on your.
+    | Also, can change validation rules.
+    |
     */
     'reset_password' => [
 
@@ -195,6 +224,9 @@ return [
     |--------------------------------------------------------------------------
     | Logout
     |--------------------------------------------------------------------------
+    |
+    | You can change route `logout` in section `route`.
+    |
     */
     'logout' => [
 
@@ -202,6 +234,7 @@ return [
          * Route to Log out
          */
         'route' => 'logout',
+
     ],
 
 ];
