@@ -27,11 +27,19 @@
             ]
         }
     },
+    "scripts": {
+        "test": "phpunit"
+    },
     "require": {
         "php": "^8.0",
         "ext-json": "*",
         "laravel/framework": "^8.0.0",
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "^6.24",
+        "illuminated/testing-tools": "^8.1"
     }
 }
