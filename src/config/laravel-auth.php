@@ -32,50 +32,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Login
-    |--------------------------------------------------------------------------
-    |
-    | After using this package you can change the route `login`,
-    | in section `route`. It is also possible to change validation rules.
-    | If you add a new social provider, don't forget to add to
-    | validation rules in section `driver` after `google` driver.
-    |
-    */
-    'login' => [
-
-        /*
-         * Route to Log in
-         */
-        'route' => 'login',
-
-        /*
-         * Validation rules to Login
-         */
-        'rules' => [
-            'email' => [
-                'required_without_all:driver,access_token',
-                'string',
-            ],
-            'password' => [
-                'required_without_all:driver,access_token',
-                'string',
-            ],
-            'driver' => [
-                'required_without_all:email,password',
-                \Illuminate\Validation\Rule::in([
-                    'google',
-                ]),
-            ],
-            'access_token' => [
-                'required_without_all:email,password',
-                'string',
-            ],
-        ],
-    ],
-
-
-    /*
-    |--------------------------------------------------------------------------
     | Socialite providers
     |--------------------------------------------------------------------------
     |
@@ -87,13 +43,41 @@ return [
     'socialite' => [
 
         'providers' => [
+
             'google' => [
                 'client_id' => env('GOOGLE_CLIENT_ID'),
                 'client_secret' => env('GOOGLE_CLIENT_SECRET'),
                 'redirect' => env('GOOGLE_REDIRECT'),
             ],
+
+            'facebook' => [
+                'client_id' => env('FACEBOOK_CLIENT_ID'),
+                'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+                'redirect' => env('FACEBOOK_REDIRECT'),
+            ],
+
             // ...
+
         ]
+
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Login
+    |--------------------------------------------------------------------------
+    |
+    | After using this package you can change the route `login`,
+    | in section `route`.
+    |
+    */
+    'login' => [
+
+        /*
+         * Route to Log in
+         */
+        'route' => 'login',
 
     ],
 
@@ -114,30 +98,6 @@ return [
          */
         'route' => 'signup',
 
-        /*
-         * Validation rules to Sign Up
-         */
-        'rules' => [
-            'name' => [
-                'required',
-                'string',
-                'min:2',
-                'max:160',
-            ],
-            'email' => [
-                'required',
-                'email:rfc,filter',
-                'unique:users,email',
-                'max:80',
-            ],
-            'password' => [
-                'required',
-                'string',
-                'min:8',
-                'max:50',
-            ],
-        ],
-
     ],
 
 
@@ -147,7 +107,6 @@ return [
     |--------------------------------------------------------------------------
     |
     | You can change route `forgot-password` in section `route`.
-    | It is also possible to change validation rules.
     |
     */
     'forgot_password' => [
@@ -156,18 +115,6 @@ return [
          * Route to Forgot Password
          */
         'route' => 'forgot-password',
-
-        /*
-         * Validation rules to Forgot Password
-         */
-        'rules' => [
-            'email' => [
-                'required',
-                'email',
-                'exists:users,email'
-            ],
-        ],
-
     ],
 
 
@@ -180,7 +127,6 @@ return [
     | It is also possible to change the web_url that comes
     | in the password reset email.
     | In section `notification` you can change class on your.
-    | Also, can change validation rules.
     |
     */
     'reset_password' => [
@@ -199,23 +145,6 @@ return [
          * Notification class
          */
         'notification' => LaravelAuth\Notifications\ResetPasswordNotification::class,
-
-        /*
-         * Validation rules to Reset Password
-         */
-        'rules' => [
-            'token' => [
-                'required',
-                'string',
-                'exists:password_resets,token'
-            ],
-            'password' => [
-                'required',
-                'string',
-                'min:8',
-                'max:50',
-            ],
-        ],
 
     ],
 

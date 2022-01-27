@@ -13,6 +13,18 @@ class ResetPasswordRequest extends FormRequest
      */
     public function rules(): array
     {
-        return config('laravel-auth.reset_password.rules');
+        return [
+            'token' => [
+                'required',
+                'string',
+                'exists:password_resets,token'
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:50',
+            ],
+        ];
     }
 }

@@ -13,6 +13,25 @@ class SignUpRequest extends FormRequest
      */
     public function rules(): array
     {
-        return config('laravel-auth.signup.rules');
+        return [
+            'name' => [
+                'required',
+                'string',
+                'min:2',
+                'max:160',
+            ],
+            'email' => [
+                'required',
+                'email:rfc,filter',
+                'unique:users,email',
+                'max:80',
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:50',
+            ],
+        ];
     }
 }

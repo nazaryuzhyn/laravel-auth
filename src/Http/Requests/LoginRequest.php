@@ -3,6 +3,7 @@
 namespace LaravelAuth\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class LoginRequest extends FormRequest
 {
@@ -13,6 +14,27 @@ class LoginRequest extends FormRequest
      */
     public function rules(): array
     {
-        return config('laravel-auth.login.rules');
+        return [
+            'email' => [
+                'required_without_all:driver,access_token',
+                'string',
+            ],
+            'password' => [
+                'required_without_all:driver,access_token',
+                'string',
+            ],
+            'driver' => [
+                'required_without_all:email,password',
+                Rule::in(
+                    array_keys(
+                        config('laravel-auth.socialite.providers')
+                    )
+                ),
+            ],
+            'access_token' => [
+                'required_without_all:email,password',
+                'string',
+            ],
+        ];
     }
 }

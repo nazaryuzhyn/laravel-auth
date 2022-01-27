@@ -13,6 +13,12 @@ class ForgotPasswordRequest extends FormRequest
      */
     public function rules(): array
     {
-        return config('laravel-auth.forgot_password.rules');
+        return [
+            'email' => [
+                'required',
+                'email',
+                'exists:users,email'
+            ],
+        ];
     }
 }
