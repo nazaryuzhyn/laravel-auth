@@ -79,6 +79,11 @@ return [
          */
         'route' => 'login',
 
+        /*
+         * Controller class
+         */
+        'controller' => LaravelAuth\Http\Controllers\LoginController::class,
+
     ],
 
 
@@ -98,6 +103,11 @@ return [
          */
         'route' => 'signup',
 
+        /*
+         * Controller class
+         */
+        'controller' => LaravelAuth\Http\Controllers\SignUpController::class,
+
     ],
 
 
@@ -115,6 +125,11 @@ return [
          * Route to Forgot Password
          */
         'route' => 'forgot-password',
+
+        /*
+         * Controller class
+         */
+        'controller' => LaravelAuth\Http\Controllers\ForgotPasswordController::class,
     ],
 
 
@@ -142,6 +157,11 @@ return [
         'web_url' => env('RESET_PASSWORD_URL', '/reset-password'),
 
         /*
+         * Controller class
+         */
+        'controller' => LaravelAuth\Http\Controllers\ResetPasswordController::class,
+
+        /*
          * Notification class
          */
         'notification' => LaravelAuth\Notifications\ResetPasswordNotification::class,
@@ -163,6 +183,11 @@ return [
          * Route to Log out
          */
         'route' => 'logout',
+
+        /*
+         * Controller class
+         */
+        'controller' => LaravelAuth\Http\Controllers\LogoutController::class,
 
     ],
 
