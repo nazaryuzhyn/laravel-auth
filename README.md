@@ -87,7 +87,7 @@ Also, you can change the routes in the configuration file.
 
 You can send the request to route `/api/signup` for the signup.
 
-Body Parameters:
+**Body Parameters:**
 
 `name` - required, string, min 2, max 160.
 
@@ -99,7 +99,7 @@ Body Parameters:
 
 You can send the request to route `/api/login` for login.
 
-Body Parameters:
+**Body Parameters:**
 
 `email` - required without driver and access_token, string.
 
@@ -115,7 +115,7 @@ Also, before using auth via social media you need to add in `.env` keys.
 
 ### Logout
 
-Requires authentication
+**Requires authentication**
 
 You can send the request to route `/api/logout` for the logout.
 
@@ -123,7 +123,7 @@ You can send the request to route `/api/logout` for the logout.
 
 You can send the request to route `/api/forgot-password` for send request forgot password.
 
-Body Parameters:
+**Body Parameters:**
 
 `email` - required, string, email, exists user.
 
@@ -131,7 +131,7 @@ Body Parameters:
 
 You can send the request to route `/api/reset-password` for the reset password.
 
-Body Parameters:
+**Body Parameters:**
 
 `token` - required, string, exists token in table 'password_resets'.
 
