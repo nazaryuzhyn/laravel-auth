@@ -2,6 +2,14 @@
 
 Authorization package for Laravel.
 
+### Features
+
+* Signup
+* Login via email & password
+* Login via social media (google, facebook)
+* Forgot password
+* Reset password
+
 ## Installation
 
 You can install the package via composer:
@@ -102,6 +110,8 @@ Body Parameters:
 `access_token` - required without email and password, string.
 
 For login, via social media, you need a request with parameters `driver` and `access_token`.
+
+Also, before using auth via social media you need to add in `.env` keys.
 
 ### Logout
 
