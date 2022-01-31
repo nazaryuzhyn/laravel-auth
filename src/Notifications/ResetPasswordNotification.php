@@ -6,6 +6,12 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
+/**
+ * Class ResetPasswordNotification.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Notifications
+ */
 class ResetPasswordNotification extends Notification
 {
     use Queueable;

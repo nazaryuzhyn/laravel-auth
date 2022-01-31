@@ -4,6 +4,12 @@ namespace LaravelAuth\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class SignUpRequest.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Http\Requests
+ */
 class SignUpRequest extends FormRequest
 {
     /**

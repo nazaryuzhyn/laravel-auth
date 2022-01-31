@@ -7,6 +7,12 @@ use Illuminated\Testing\TestingTools;
 use LaravelAuth\Models\User;
 use LaravelAuth\Providers\LaravelAuthServiceProvider;
 
+/**
+ * Class TestCase.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Tests
+ */
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     use TestingTools;

@@ -4,6 +4,12 @@ namespace LaravelAuth\Tests\Http\Controllers;
 
 use LaravelAuth\Tests\TestCase;
 
+/**
+ * Class SignUpControllerTest.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Tests\Http\Controllers
+ */
 class SignUpControllerTest extends TestCase
 {
     protected array $userData;

@@ -4,6 +4,12 @@ namespace LaravelAuth\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class ResetPasswordRequest.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Http\Requests
+ */
 class ResetPasswordRequest extends FormRequest
 {
     /**

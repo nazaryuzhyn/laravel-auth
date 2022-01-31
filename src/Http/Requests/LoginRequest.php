@@ -5,6 +5,12 @@ namespace LaravelAuth\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/**
+ * Class LoginRequest.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Http\Requests
+ */
 class LoginRequest extends FormRequest
 {
     /**

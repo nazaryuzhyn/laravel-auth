@@ -4,6 +4,12 @@ namespace LaravelAuth\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class LaravelAuthServiceProvider.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Providers
+ */
 class LaravelAuthServiceProvider extends ServiceProvider
 {
     /**

@@ -5,6 +5,12 @@ namespace LaravelAuth\Tests;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Application;
 
+/**
+ * Trait SetUpDatabase.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Tests
+ */
 trait SetUpDatabase
 {
     /**

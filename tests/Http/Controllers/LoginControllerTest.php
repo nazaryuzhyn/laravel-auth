@@ -4,6 +4,12 @@ namespace LaravelAuth\Tests\Http\Controllers;
 
 use LaravelAuth\Tests\TestCase;
 
+/**
+ * Class LoginControllerTest.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Tests\Http\Controllers
+ */
 class LoginControllerTest extends TestCase
 {
     protected array $user;
