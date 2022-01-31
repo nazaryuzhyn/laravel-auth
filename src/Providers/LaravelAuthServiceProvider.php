@@ -13,7 +13,15 @@ class LaravelAuthServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        config([
+            'auth.guards.sanctum' => array_merge([
+                'driver' => 'sanctum',
+                'provider' => null,
+            ], config('auth.guards.sanctum', [
+                'driver' => 'session',
+                'provider' => 'users',
+            ])),
+        ]);
     }
 
     /**
