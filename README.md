@@ -1,4 +1,4 @@
-# Laravel Package Auth
+# Laravel Authorization
 
 Authorization package for Laravel.
 
@@ -9,6 +9,7 @@ Authorization package for Laravel.
 * Login via social media (google, facebook)
 * Forgot password
 * Reset password
+* Logout
 
 ## Installation
 
