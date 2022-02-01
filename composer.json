@@ -1,6 +1,20 @@
 {
     "name": "nazaryuzhyn/laravel-auth",
     "description": "Laravel package for auth, registration, reset password.",
+    "keywords": [
+        "laravel",
+        "signup",
+        "auth",
+        "login",
+        "registration",
+        "authentication",
+        "forgot password",
+        "reset password",
+        "socialite",
+        "login via google",
+        "login via facebook",
+        "login via social media"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
