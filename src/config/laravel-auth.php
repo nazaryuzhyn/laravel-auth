@@ -11,13 +11,17 @@ return [
     | Leave as null to use default user model.
     |
     */
-    'user_model' => null,
+    'user_model' => LaravelAuth\Models\User::class,
 
 
     /*
     |--------------------------------------------------------------------------
     | User Resource
     |--------------------------------------------------------------------------
+    |
+    | If you are using a custom resource you can specify it here.
+    | Leave as null to use default return user.
+    |
     */
     'user_resource' => LaravelAuth\Http\Resources\UserResource::class,
 
