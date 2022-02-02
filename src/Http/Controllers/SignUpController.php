@@ -21,7 +21,7 @@ class SignUpController extends Controller
      * Sign up user.
      *
      * @param SignUpRequest $request
-     * @return mixed
+     * @return JsonResponse
      */
     public function __invoke(SignUpRequest $request): JsonResponse
     {
