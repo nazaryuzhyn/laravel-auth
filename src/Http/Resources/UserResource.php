@@ -5,6 +5,12 @@ namespace LaravelAuth\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class UserResource.
+ *
+ * @author Nazar Yuzhyn <nazaryuzhyn@gmail.com>
+ * @package LaravelAuth\Http\Resources
+ */
 class UserResource extends JsonResource
 {
     /**
