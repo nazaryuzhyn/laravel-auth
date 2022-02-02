@@ -2,13 +2,13 @@
 
 namespace LaravelAuth\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use LaravelAuth\Http\Requests\ResetPasswordRequest;
 use LaravelAuth\Models\PasswordReset;
-use LaravelAuth\Models\User;
 
 /**
  * Class ResetPasswordController.

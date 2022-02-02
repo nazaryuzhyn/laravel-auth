@@ -2,6 +2,7 @@
 
 namespace LaravelAuth\Http\Controllers;
 
+use App\Models\User;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
@@ -11,7 +12,6 @@ use Illuminate\Support\Facades\Response;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\AbstractProvider;
 use LaravelAuth\Http\Requests\LoginRequest;
-use LaravelAuth\Models\User;
 
 /**
  * Class LoginController.
