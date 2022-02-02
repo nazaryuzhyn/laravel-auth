@@ -2,7 +2,6 @@
 
 namespace LaravelAuth\Http\Controllers;
 
-use App\Models\User;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Response;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\AbstractProvider;
 use LaravelAuth\Http\Requests\LoginRequest;
+use LaravelAuth\Models\User;
 
 /**
  * Class LoginController.
@@ -22,6 +22,29 @@ use LaravelAuth\Http\Requests\LoginRequest;
 class LoginController extends Controller
 {
     /**
+     * Resource class.
+     *
+     * @var string
+     */
+    protected string $resource;
+
+    /**
+     * Model class.
+     *
+     * @var string
+     */
+    protected string $model;
+
+    /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->resource = config('laravel-auth.user_resource');
+        $this->model = config('laravel-auth.user_model') ?? User::class;
+    }
+
+    /**
      * Login user.
      *
      * @param LoginRequest $request
@@ -30,17 +53,15 @@ class LoginController extends Controller
      */
     public function __invoke(LoginRequest $request): JsonResponse
     {
-        $resource = config('laravel-auth.user_resource');
-        $model = config('laravel-auth.user_model') ?? \LaravelAuth\Models\User::class;
-
-        $user = $model::query()
+        $user = $this->model::query()
             ->find($this->getUser($request)->id);
+
         $token = $user->createToken($request->userAgent());
 
         return Response::json([
             'data' => [
                 'access_token' => $token->plainTextToken,
-                'user' => $resource ? new $resource($user) : $user
+                'user' => $this->resource ? new $this->resource($user) : $user
             ],
             'message' => 'Success'
         ]);
@@ -50,10 +71,10 @@ class LoginController extends Controller
      * Get user.
      *
      * @param LoginRequest $request
-     * @return User|\Illuminate\Foundation\Auth\User|null
+     * @return mixed
      * @throws AuthenticationException
      */
-    private function getUser(LoginRequest $request): User|\Illuminate\Foundation\Auth\User|null
+    private function getUser(LoginRequest $request): mixed
     {
         if ($this->shouldLoginViaSocials($request)) {
             return $this->loginViaSocials($request);
@@ -88,8 +109,6 @@ class LoginController extends Controller
      */
     private function loginViaSocials(LoginRequest $request): mixed
     {
-        $model = config('laravel-auth.user_model') ?? \LaravelAuth\Models\User::class;
-
         try {
             /** @var AbstractProvider $driver */
             $driver = Socialite::driver($request->get('driver'));
@@ -100,7 +119,7 @@ class LoginController extends Controller
             );
         }
 
-        return $model::query()->firstOrCreate(
+        return $this->model::query()->firstOrCreate(
             [
                 'email' => $socialiteUser->getEmail()
             ],
