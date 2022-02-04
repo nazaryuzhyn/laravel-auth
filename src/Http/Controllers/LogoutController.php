@@ -5,6 +5,7 @@ namespace LaravelAuth\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
 /**
@@ -23,7 +24,7 @@ class LogoutController extends Controller
      */
     public function __invoke(Request $request): JsonResponse
     {
-        $request->user()->currentAccessToken()->delete();
+        $request->user()?->currentAccessToken()->delete() ?? Auth::logout();
 
         return Response::json([], 204);
     }

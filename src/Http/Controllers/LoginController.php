@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\AbstractProvider;
+use LaravelAuth\Http\Controllers\Traits\LoginHelper;
 use LaravelAuth\Http\Requests\LoginRequest;
 
 /**
@@ -21,19 +22,7 @@ use LaravelAuth\Http\Requests\LoginRequest;
  */
 class LoginController extends Controller
 {
-    /**
-     * Resource class.
-     *
-     * @var string
-     */
-    protected string $resource;
-
-    /**
-     * Model class.
-     *
-     * @var string
-     */
-    protected string $model;
+    use LoginHelper;
 
     /**
      * Instantiate a new controller instance.
@@ -56,13 +45,11 @@ class LoginController extends Controller
         $user = $this->model::query()
             ->find($this->getUser($request)->id);
 
-        $token = $user->createToken($request->userAgent());
-
         return Response::json([
-            'data' => [
-                'access_token' => $token->plainTextToken,
+            'data' => array_filter([
+                'access_token' => $this->getAccessToken($user),
                 'user' => $this->resource ? new $this->resource($user) : $user
-            ],
+            ]),
             'message' => 'Success'
         ]);
     }
@@ -84,6 +71,10 @@ class LoginController extends Controller
             throw new AuthenticationException(
                 'Email or password is incorrect'
             );
+        }
+
+        if (!$this->hasAuthMethod('token')) {
+            $request->session()->regenerate();
         }
 
         return $request->user();
