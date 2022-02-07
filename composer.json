@@ -1,0 +1,59 @@
+{
+    "name": "nazaryuzhyn/laravel-auth",
+    "description": "Laravel package for auth, registration, reset password.",
+    "keywords": [
+        "laravel",
+        "signup",
+        "auth",
+        "login",
+        "registration",
+        "authentication",
+        "forgot password",
+        "reset password",
+        "socialite",
+        "login via google",
+        "login via facebook",
+        "login via social media"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "nazaryuzhyn",
+            "email": "nazaryuzhyn@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "LaravelAuth\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaravelAuth\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelAuth\\Providers\\LaravelAuthServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "laravel/framework": "^8.0.0",
+        "laravel/sanctum": "^2.11",
+        "laravel/socialite": "^5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "^6.24",
+        "illuminated/testing-tools": "^8.1"
+    }
+}
