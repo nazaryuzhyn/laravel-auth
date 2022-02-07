@@ -91,6 +91,12 @@ class LaravelAuthServiceProvider extends ServiceProvider
             __DIR__ . '/../Http/Controllers/ResetPasswordController.php' => app_path(
                 'Http/Controllers/ResetPasswordController.php'
             ),
+            __DIR__ . '/../Http/Controllers/DeviceController.php' => app_path(
+                'Http/Controllers/DeviceController.php'
+            ),
+            __DIR__ . '/../Http/Controllers/DeleteTokenController.php' => app_path(
+                'Http/Controllers/DeleteTokenController.php'
+            ),
         ], 'controllers');
     }
 

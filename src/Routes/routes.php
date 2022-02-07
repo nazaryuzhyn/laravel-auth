@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use LaravelAuth\Http\Controllers\DeleteTokenController;
+use LaravelAuth\Http\Controllers\DeviceController;
 use LaravelAuth\Http\Controllers\ForgotPasswordController;
 use LaravelAuth\Http\Controllers\LoginController;
 use LaravelAuth\Http\Controllers\LogoutController;
@@ -46,5 +48,17 @@ Route::prefix(config('laravel-auth.prefix_route', 'api'))
             config('laravel-auth.logout.controller', LogoutController::class)
         )->middleware('auth:sanctum')
             ->name(config('laravel-auth.logout.route', 'logout'));
+
+        Route::get(
+            config('laravel-auth.devices.route', 'devices'),
+            config('laravel-auth.devices.controller', DeviceController::class)
+        )->middleware('auth:sanctum')
+            ->name(config('laravel-auth.devices.route', 'devices'));
+
+        Route::delete(
+            config('laravel-auth.revoking-tokens.route', 'delete-token'),
+            config('laravel-auth.revoking-tokens.controller', DeleteTokenController::class)
+        )->middleware('auth:sanctum')
+            ->name(config('laravel-auth.revoking-tokens.route', 'delete-token'));
 
 });

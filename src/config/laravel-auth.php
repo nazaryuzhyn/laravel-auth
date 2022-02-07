@@ -206,4 +206,57 @@ return [
 
     ],
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Devices
+    |--------------------------------------------------------------------------
+    |
+    | You can change route `devices` in section `route`.
+    | Also, you can change controller class.
+    |
+    */
+    'devices' => [
+
+        /*
+         * Route to get devices user.
+         */
+        'route' => 'devices',
+
+        /*
+         * Controller class
+         */
+        'controller' => LaravelAuth\Http\Controllers\DeviceController::class,
+
+        /*
+         * Resource class
+         */
+        'resource' => LaravelAuth\Http\Resources\DeviceResource::class,
+
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Revoking Tokens
+    |--------------------------------------------------------------------------
+    |
+    | You can change route `delete-token` in section `route`.
+    | Also, you can change controller class.
+    |
+    */
+    'revoking-tokens' => [
+
+        /*
+         * Route to delete the token.
+         */
+        'route' => 'delete-token',
+
+        /*
+         * Controller class
+         */
+        'controller' => LaravelAuth\Http\Controllers\DeleteTokenController::class,
+
+    ],
+
 ];
